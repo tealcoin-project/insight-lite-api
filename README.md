@@ -1,26 +1,26 @@
 # Insight API
 
-A Litecoin blockchain REST and web socket API service for [Litecore Node](https://github.com/litecoin-project/litecore-node).
+A Tealcoin blockchain REST and web socket API service for [Bitcore Node](https://github.com/tealcoin-project/litecore-tealcoin-node).
 
-This is a backend-only service. If you're looking for the web frontend application, take a look at https://github.com/litecoin-project/insight-lite-ui.
+This is a backend-only service. If you're looking for the web frontend application, take a look at https://github.com/tealcoin-project/insight-tealcoin-ui.
 
 ## Getting Started
 
 ```bashl
-npm install -g litecore-node@latest
-litecore-node create mynode
+npm install -g litecore-tealcoin-node@latest
+litecore-tealcoin-node create mynode
 cd mynode
-litecore-node install insight-lite-api
-litecore-node start
+litecore-tealcoin-node install insight-tealcoin-api
+litecore-tealcoin-node start
 ```
 
-The API endpoints will be available by default at: `http://localhost:3001/insight-lite-api/`
+The API endpoints will be available by default at: `http://localhost:3001/insight-api/`
 
 ## Prerequisites
 
-- [Litecore Node 3.x](https://github.com/litecoin-project/litecore-node)
+- [Bitcore Node 3.x](https://github.com/tealcoin-project/litecore-tealcoin-node)
 
-**Note:** You can use an existing Litecoin data directory, however `txindex`, `addressindex`, `timestampindex` and `spentindex` needs to be set to true in `bitcoin.conf`, as well as a few other additional fields.
+**Note:** You can use an existing Tealcoin data directory, however `txindex`, `addressindex`, `timestampindex` and `spentindex` needs to be set to true in `tealcoin.conf`, as well as a few other additional fields.
 
 ## Notes on Upgrading from v0.3
 
@@ -99,22 +99,22 @@ Caching support has not yet been added in the v0.3 upgrade.
 
 ## Query Rate Limit
 
-To protect the server, insight-lite-api has a built it query rate limiter. It can be configurable in `litecore-node.json` with:
+To protect the server, insight-api has a built it query rate limiter. It can be configurable in `bitcore-node.json` with:
 ``` json
   "servicesConfig": {
-    "insight-lite-api": {
+    "insight-api": {
       "rateLimiterOptions": {
         "whitelist": ["::ffff:127.0.0.1"]
       }
     }
   }
 ```
-With all the configuration options available: https://github.com/bitpay/insight-lite-api/blob/master/lib/ratelimiter.js#L10-17
+With all the configuration options available: https://github.com/bitpay/insight-api/blob/master/lib/ratelimiter.js#L10-17
 
 Or disabled entirely with:
 ``` json
   "servicesConfig": {
-    "insight-lite-api": {
+    "insight-api": {
       "disableRateLimiter": true
     }
   }
@@ -125,15 +125,15 @@ Or disabled entirely with:
 
 ### Block
 ```
-  /insight-lite-api/block/[:hash]
-  /insight-lite-api/block/00000000a967199a2fad0877433c93df785a8d8ce062e5f9b451cd1397bdbf62
+  /insight-api/block/[:hash]
+  /insight-api/block/00000000a967199a2fad0877433c93df785a8d8ce062e5f9b451cd1397bdbf62
 ```
 
 ### Block Index
 Get block hash by height
 ```
-  /insight-lite-api/block-index/[:height]
-  /insight-lite-api/block-index/0
+  /insight-api/block-index/[:height]
+  /insight-api/block-index/0
 ```
 This would return:
 ```
@@ -146,8 +146,8 @@ which is the hash of the Genesis block (0 height)
 
 ### Raw Block
 ```
-  /insight-lite-api/rawblock/[:blockHash]
-  /insight-lite-api/rawblock/[:blockHeight]
+  /insight-api/rawblock/[:blockHash]
+  /insight-api/rawblock/[:blockHeight]
 ```
 
 This would return:
@@ -161,7 +161,7 @@ This would return:
 
 Get block summaries by date:
 ```
-  /insight-lite-api/blocks?limit=3&blockDate=2016-04-22
+  /insight-api/blocks?limit=3&blockDate=2016-04-22
 ```
 
 Example response:
@@ -195,31 +195,31 @@ Example response:
 
 ### Transaction
 ```
-  /insight-lite-api/tx/[:txid]
-  /insight-lite-api/tx/525de308971eabd941b139f46c7198b5af9479325c2395db7f2fb5ae8562556c
-  /insight-lite-api/rawtx/[:rawid]
-  /insight-lite-api/rawtx/525de308971eabd941b139f46c7198b5af9479325c2395db7f2fb5ae8562556c
+  /insight-api/tx/[:txid]
+  /insight-api/tx/525de308971eabd941b139f46c7198b5af9479325c2395db7f2fb5ae8562556c
+  /insight-api/rawtx/[:rawid]
+  /insight-api/rawtx/525de308971eabd941b139f46c7198b5af9479325c2395db7f2fb5ae8562556c
 ```
 
 ### Address
 ```
-  /insight-lite-api/addr/[:addr][?noTxList=1][&from=&to=]
-  /insight-lite-api/addr/mmvP3mTe53qxHdPqXEvdu8WdC7GfQ2vmx5?noTxList=1
-  /insight-lite-api/addr/mmvP3mTe53qxHdPqXEvdu8WdC7GfQ2vmx5?from=1000&to=2000
+  /insight-api/addr/[:addr][?noTxList=1][&from=&to=]
+  /insight-api/addr/mmvP3mTe53qxHdPqXEvdu8WdC7GfQ2vmx5?noTxList=1
+  /insight-api/addr/mmvP3mTe53qxHdPqXEvdu8WdC7GfQ2vmx5?from=1000&to=2000
 ```
 
 ### Address Properties
 ```
-  /insight-lite-api/addr/[:addr]/balance
-  /insight-lite-api/addr/[:addr]/totalReceived
-  /insight-lite-api/addr/[:addr]/totalSent
-  /insight-lite-api/addr/[:addr]/unconfirmedBalance
+  /insight-api/addr/[:addr]/balance
+  /insight-api/addr/[:addr]/totalReceived
+  /insight-api/addr/[:addr]/totalSent
+  /insight-api/addr/[:addr]/unconfirmedBalance
 ```
 The response contains the value in Satoshis.
 
 ### Unspent Outputs
 ```
-  /insight-lite-api/addr/[:addr]/utxo
+  /insight-api/addr/[:addr]/utxo
 ```
 Sample return:
 ```
@@ -250,13 +250,13 @@ Sample return:
 ### Unspent Outputs for Multiple Addresses
 GET method:
 ```
-  /insight-lite-api/addrs/[:addrs]/utxo
-  /insight-lite-api/addrs/2NF2baYuJAkCKo5onjUKEPdARQkZ6SYyKd5,2NAre8sX2povnjy4aeiHKeEh97Qhn97tB1f/utxo
+  /insight-api/addrs/[:addrs]/utxo
+  /insight-api/addrs/2NF2baYuJAkCKo5onjUKEPdARQkZ6SYyKd5,2NAre8sX2povnjy4aeiHKeEh97Qhn97tB1f/utxo
 ```
 
 POST method:
 ```
-  /insight-lite-api/addrs/utxo
+  /insight-api/addrs/utxo
 ```
 
 POST params:
@@ -266,25 +266,25 @@ addrs: 2NF2baYuJAkCKo5onjUKEPdARQkZ6SYyKd5,2NAre8sX2povnjy4aeiHKeEh97Qhn97tB1f
 
 ### Transactions by Block
 ```
-  /insight-lite-api/txs/?block=HASH
-  /insight-lite-api/txs/?block=00000000fa6cf7367e50ad14eb0ca4737131f256fc4c5841fd3c3f140140e6b6
+  /insight-api/txs/?block=HASH
+  /insight-api/txs/?block=00000000fa6cf7367e50ad14eb0ca4737131f256fc4c5841fd3c3f140140e6b6
 ```
 ### Transactions by Address
 ```
-  /insight-lite-api/txs/?address=ADDR
-  /insight-lite-api/txs/?address=mmhmMNfBiZZ37g1tgg2t8DDbNoEdqKVxAL
+  /insight-api/txs/?address=ADDR
+  /insight-api/txs/?address=mmhmMNfBiZZ37g1tgg2t8DDbNoEdqKVxAL
 ```
 
 ### Transactions for Multiple Addresses
 GET method:
 ```
-  /insight-lite-api/addrs/[:addrs]/txs[?from=&to=]
-  /insight-lite-api/addrs/2NF2baYuJAkCKo5onjUKEPdARQkZ6SYyKd5,2NAre8sX2povnjy4aeiHKeEh97Qhn97tB1f/txs?from=0&to=20
+  /insight-api/addrs/[:addrs]/txs[?from=&to=]
+  /insight-api/addrs/2NF2baYuJAkCKo5onjUKEPdARQkZ6SYyKd5,2NAre8sX2povnjy4aeiHKeEh97Qhn97tB1f/txs?from=0&to=20
 ```
 
 POST method:
 ```
-  /insight-lite-api/addrs/txs
+  /insight-api/addrs/txs
 ```
 
 POST params:
@@ -330,7 +330,7 @@ Note: if pagination params are not specified, the result is an array of transact
 ### Transaction Broadcasting
 POST method:
 ```
-  /insight-lite-api/tx/send
+  /insight-api/tx/send
 ```
 POST params:
 ```
@@ -356,17 +356,17 @@ POST response:
 
 ### Historic Blockchain Data Sync Status
 ```
-  /insight-lite-api/sync
+  /insight-api/sync
 ```
 
 ### Live Network P2P Data Sync Status
 ```
-  /insight-lite-api/peer
+  /insight-api/peer
 ```
 
 ### Status of the Bitcoin Network
 ```
-  /insight-lite-api/status?q=xxx
+  /insight-api/status?q=xxx
 ```
 
 Where "xxx" can be:
@@ -379,7 +379,7 @@ Where "xxx" can be:
 
 ### Utility Methods
 ```
-  /insight-lite-api/utils/estimatefee[?nbBlocks=2]
+  /insight-api/utils/estimatefee[?nbBlocks=2]
 ```
 
 

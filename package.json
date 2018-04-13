@@ -1,8 +1,11 @@
 {
-  "name": "insight-lite-api",
-  "description": "A Litecoin blockchain REST and web socket API service for Litecore Node.",
+  "name": "insight-tealcoin-api",
+  "description": "A Tealcoin blockchain REST and web socket API service for Bitcore Node.",
   "version": "0.4.4",
-  "repository": "git://github.com/litecoin-project/insight-lite-api.git",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tealcoin-project/insight-tealcoin-api.git"
+  },
   "contributors": [
     {
       "name": "Gustavo Cortez",
@@ -40,13 +43,13 @@
   "bugs": {
     "url": "https://github.com/litecoin-project/insight-lite-api/issues"
   },
-  "homepage": "https://github.com/litecoin-project/insight-lite-api",
+  "homepage": "https://github.com/tealcoin-project/insight-tealcoin-api",
   "license": "MIT",
   "keywords": [
     "insight",
     "insight api",
     "blockchain",
-    "litecoin api",
+    "tealcoin api",
     "blockchain api",
     "json",
     "litecore"
@@ -55,14 +58,14 @@
     "node": ">=0.12.0"
   },
   "scripts": {
-    "test": "NODE_ENV=test mocha -R spec --recursive"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "main": "lib",
   "bitcoreNode": "lib",
   "dependencies": {
     "async": "*",
-    "litecore-lib": "^0.13.22",
-    "litecore-message": "^1.0.5",
+    "litecore-tealcoin-lib": "^0.13.22",
+    "litecore-tealcoin-message": "^1.0.5",
     "body-parser": "^1.13.3",
     "compression": "^1.6.1",
     "lodash": "^2.4.1",
@@ -76,5 +79,21 @@
     "proxyquire": "^1.7.2",
     "should": "^8.3.1",
     "sinon": "^1.10.3"
-  }
+  },
+  "maintainers": [
+    {
+      "name": "coblee",
+      "email": "coblee@tealcoin.org"
+    },
+    {
+      "name": "losh11",
+      "email": "loshan1212@gmail.com"
+    },
+    {
+      "name": "qxchan",
+      "email": "tealcoin.project@gmail.com"
+    }
+  ],
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/insight-tealcoin-api/-/insight-tealcoin-api-0.4.4.tgz"
 }

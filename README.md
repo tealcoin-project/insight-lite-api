@@ -1,5 +1,7 @@
 # Insight API
 
+[![NPM Package](https://img.shields.io/npm/v/insight-tealcoin-api.svg?style=flat-square)](https://www.npmjs.org/package/insight-tealcoin-api)
+
 A Tealcoin blockchain REST and web socket API service for [Bitcore Node](https://github.com/tealcoin-project/litecore-tealcoin-node).
 
 This is a backend-only service. If you're looking for the web frontend application, take a look at https://github.com/tealcoin-project/insight-tealcoin-ui.
